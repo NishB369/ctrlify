@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDom from "react-dom/client";
+import Home from "./Pages/Home/Home";
 
 const App = () => {
-  return <div className="text-3xl text-orange-500">Hello</div>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 const root = ReactDom.createRoot(document.querySelector("#root"));
