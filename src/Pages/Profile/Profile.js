@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import ProfileMainCard from "../../Components/ProfileMainCard/ProfileMainCard";
+import PersonalDetails from "../../Components/PersonalDetails/PersonalDetails";
 
 const Profile = () => {
   return (
@@ -13,7 +14,8 @@ const Profile = () => {
         </Link>
         <div className="font-semibold text-xl">My Profile</div>
       </div>
-      <ProfileMainCard/>
+      <ProfileMainCard />
+      <PersonalDetails />
     </div>
   );
 };
