@@ -7,7 +7,7 @@ const PersonalDetail = ({ field, placeholder }) => {
       <input
         placeholder={placeholder}
         type="text"
-        className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg"
+        className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black"
       ></input>
     </div>
   );

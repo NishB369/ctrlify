@@ -14,7 +14,7 @@ const RecentTransactions = ({ setAllTransactions }) => {
           View All
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-1">
         <RecentTransaction />
         <RecentTransaction />
         <RecentTransaction />
