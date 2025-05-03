@@ -4,7 +4,7 @@ import LoadedHome from "./LoadedHome";
 
 const Home = () => {
   // create a state variable to conditionally render the content
-  const [showContent, setShowContent] = useState(false);
+  const [showContent, setShowContent] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
