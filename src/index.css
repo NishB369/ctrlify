@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: agrandir-reg;
+  src: url(../Agrandir-Regular.otf);
+}
+
 body {
-  font-family: "Roboto";
+  font-family: "agrandir-reg";
+}
+
+body, html{
+  height: 100%;
+  width: 100%;
 }

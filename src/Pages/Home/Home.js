@@ -15,11 +15,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-lvw h-lvh">
       <OpeningAnimation showContent={showContent} />
       <div
         style={{ display: showContent ? "block" : "none" }}
-        className="w-screen h-screen"
+        className="w-full h-full"
       >
         <LoadedHome />
       </div>
