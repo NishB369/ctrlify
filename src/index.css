@@ -5,6 +5,11 @@
   src: url(../Agrandir-Regular.otf);
 }
 
+@font-face {
+  font-family: agrandir-gheavy;
+  src: url(../Agrandir-GrandHeavy.otf);
+}
+
 body {
   font-family: "agrandir-reg";
 }
