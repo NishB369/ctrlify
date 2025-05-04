@@ -136,7 +136,7 @@ const Dashboard = () => {
       </div>
       <div className="flex flex-col gap-4">
         <div className="px-4">
-          <Chart />
+          <Chart clickedTab={clickedTab} />
         </div>
         <RecentTransactions
           setAllTransactions={setAllTransactions}
@@ -149,7 +149,16 @@ const Dashboard = () => {
           }
         />
         {allTransactions && (
-          <AllTransactions setAllTransactions={setAllTransactions} />
+          <AllTransactions
+            setAllTransactions={setAllTransactions}
+            renderList={
+              clickedTab == "Income"
+                ? incomeTransactions
+                : clickedTab == "Investment"
+                ? investmentTransactions
+                : expenseTransactions
+            }
+          />
         )}
       </div>
     </div>

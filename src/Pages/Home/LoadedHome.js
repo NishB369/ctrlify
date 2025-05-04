@@ -30,7 +30,10 @@ const LoadedHome = () => {
         renderList={transactions}
       />
       {allTransactions && (
-        <AllTransactions setAllTransactions={setAllTransactions} />
+        <AllTransactions
+          setAllTransactions={setAllTransactions}
+          renderList={transactions}
+        />
       )}
       {addIncome && <AddIncome setAddIcome={setAddIcome} />}
       {addInvestment && <AddInvestment setAddInvestment={setAddInvestment} />}
