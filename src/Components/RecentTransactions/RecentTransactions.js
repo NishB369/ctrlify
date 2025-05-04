@@ -1,7 +1,11 @@
 import React from "react";
 import RecentTransaction from "./RecentTransaction";
+import { useAppContext } from "../../Context/AppContext";
+import emptyVid from "../../../public/media/videos/Empty.mp4";
 
 const RecentTransactions = ({ setAllTransactions }) => {
+  const { transactions } = useAppContext();
+
   const handleViewAll = () => {
     setAllTransactions(true);
   };
@@ -14,10 +18,20 @@ const RecentTransactions = ({ setAllTransactions }) => {
           View All
         </div>
       </div>
-      <div className="flex flex-col gap-1 px-4">
-        <RecentTransaction />
-        <RecentTransaction />
-        <RecentTransaction />
+      <div className="flex flex-col gap-1 px-6 items-center justify-center">
+        {transactions.length > 0 ? (
+          transactions.map((transaction, index) => (
+            <RecentTransaction key={index} data={transaction} />
+          ))
+        ) : (
+          <video
+            src={emptyVid}
+            autoPlay
+            muted
+            loop
+            className="h-60 w-60 -mt-4"
+          />
+        )}
       </div>
     </div>
   );

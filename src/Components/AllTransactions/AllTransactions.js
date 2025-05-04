@@ -1,7 +1,10 @@
 import React from "react";
 import RecentTransaction from "../RecentTransactions/RecentTransaction";
+import { useAppContext } from "../../Context/AppContext";
 
 const AllTransactions = ({ setAllTransactions }) => {
+  const { transactions } = useAppContext();
+
   const handleCloseTransactions = () => {
     setAllTransactions(false);
   };
@@ -29,27 +32,15 @@ const AllTransactions = ({ setAllTransactions }) => {
       </div>
 
       <div className="flex flex-col gap-4 overflow-y-scroll w-full py-3">
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
-        <RecentTransaction bgOverlay={true} />
+        {transactions.length > 0
+          ? transactions.map((transaction, index) => (
+              <RecentTransaction
+                key={index}
+                bgOverlay={true}
+                data={transaction}
+              />
+            ))
+          : "No Transactions Yet"}
       </div>
     </div>
   );
