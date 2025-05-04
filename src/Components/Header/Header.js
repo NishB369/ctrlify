@@ -7,7 +7,7 @@ const Header = () => {
   const [notificationCount, setNotificationCount] = useState(0);
 
   return (
-    <div className="flex items-center justify-between py-2 pt-4">
+    <div className="flex items-center justify-between pt-4 sticky top-0 bg-white z-10 py-4 w-full px-2 opacity-90">
       <div className="flex items-center justify-center gap-3">
         <Link to="/Profile">
           <img src={profilePicUrl} className="w-8 h-8 rounded-full" />
@@ -29,9 +29,11 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="w-8 h-8 border rounded-full flex items-center justify-center">
-          <div className="bi bi-list mt-1"></div>
-        </div>
+        <Link to="/Dashboard">
+          <div className="w-8 h-8 border rounded-full flex items-center justify-center">
+            <div className="bi bi-pie-chart-fill text-[#0171ff] mt-1"></div>
+          </div>
+        </Link>
       </div>
     </div>
   );

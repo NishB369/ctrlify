@@ -6,7 +6,7 @@ import PersonalDetails from "../../Components/PersonalDetails/PersonalDetails";
 const Profile = () => {
   return (
     <div className="px-4 py-2 flex flex-col gap-4">
-      <div className="flex items-center justify-between sticky top-0 z-10 py-4 w-full opacity-90">
+      <div className="flex items-center justify-between sticky top-0 bg-white z-10 py-4 w-full px-4 opacity-90">
         <Link to="/">
           <div className="w-8 h-8 border rounded-full flex items-center justify-center">
             <span className="bi bi-arrow-left mt-1"></span>

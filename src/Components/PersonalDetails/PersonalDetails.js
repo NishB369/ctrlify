@@ -17,6 +17,12 @@ const PersonalDetails = () => {
         </div>
         <IncomeField />
       </div>
+      <button
+        type="submit"
+        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold text-white"
+      >
+        Submit
+      </button>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router";
 import Profile from "./Pages/Profile/Profile";
 import Notifications from "./Pages/Notifications/Notifications";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/Notifications",
     element: <Notifications />,
+  },
+  {
+    path: "/Dashboard",
+    element: <Dashboard />,
   },
 ]);
 
