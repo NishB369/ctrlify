@@ -54,6 +54,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const [incomeFormData, setIncomeFormData] = useState({
+    TransactionType: "Income",
     Amount: "",
     Entity: "",
     Category: "",
@@ -73,7 +74,6 @@ export const AppProvider = ({ children }) => {
   const addIncomeTransaction = (transaction) => {
     const newTransaction = {
       id: Date.now().toString(),
-      TransactionType: "Income",
       ...transaction,
     };
 
@@ -91,6 +91,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const [expenseFormData, setExpenseFormData] = useState({
+    TransactionType: "Expense",
     Amount: "",
     Entity: "",
     Category: "",
@@ -110,7 +111,6 @@ export const AppProvider = ({ children }) => {
   const addExpenseTransaction = (transaction) => {
     const newTransaction = {
       id: Date.now().toString(),
-      TransactionType: "Expense",
       ...transaction,
     };
 
@@ -128,6 +128,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const [investmentFormData, setInvestmentFormData] = useState({
+    TransactionType: "Investment",
     Amount: "",
     Entity: "",
     Category: "",
@@ -147,7 +148,6 @@ export const AppProvider = ({ children }) => {
   const addInvestmentTransaction = (transaction) => {
     const newTransaction = {
       id: Date.now().toString(),
-      TransactionType: "Investment",
       ...transaction,
     };
 
@@ -157,6 +157,16 @@ export const AppProvider = ({ children }) => {
       "TotalInvestment",
       formData.TotalInvestment + Number(transaction.Amount)
     );
+  };
+
+  const [transactions, setTransactions] = useState([]);
+
+  const addTransaction = (transaction) => {
+    const newTransaction = {
+      ...transaction,
+    };
+
+    setTransactions((prev) => [newTransaction, ...prev]);
   };
 
   return (
@@ -185,6 +195,9 @@ export const AppProvider = ({ children }) => {
         updateInvestmentFormData,
         addInvestmentTransaction,
         investmentTransactions,
+
+        transactions,
+        addTransaction,
       }}
     >
       {children}

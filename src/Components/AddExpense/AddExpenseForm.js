@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useAppContext } from "../../Context/AppContext";
 
 const AddExpenseForm = ({ setSubmit }) => {
-  const { expenseFormData, updateExpenseFormData, addExpenseTransaction } =
+  const { expenseFormData, updateExpenseFormData, addExpenseTransaction, addTransaction } =
     useAppContext();
 
   const handleSubmitClick = () => {
     setSubmit(true);
     addExpenseTransaction(expenseFormData);
+    addTransaction(expenseFormData)
     updateExpenseFormData("Amount", "");
     updateExpenseFormData("Entity", "");
     updateExpenseFormData("Category", "");

@@ -6,11 +6,13 @@ const AddInvestmentForm = ({ setSubmit }) => {
     investmentFormData,
     updateInvestmentFormData,
     addInvestmentTransaction,
+    addTransaction,
   } = useAppContext();
 
   const handleSubmitClick = () => {
     setSubmit(true);
     addInvestmentTransaction(investmentFormData);
+    addTransaction(investmentFormData);
     updateInvestmentFormData("Amount", "");
     updateInvestmentFormData("Entity", "");
     updateInvestmentFormData("Category", "");

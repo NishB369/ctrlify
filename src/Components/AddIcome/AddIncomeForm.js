@@ -6,11 +6,13 @@ const AddIncomeForm = ({ setSubmit }) => {
     incomeFormData,
     updateIncomeFormData,
     addIncomeTransaction,
+    addTransaction,
   } = useAppContext();
 
   const handleSubmitClick = () => {
     setSubmit(true);
     addIncomeTransaction(incomeFormData);
+    addTransaction(incomeFormData);
     updateIncomeFormData("Amount", "");
     updateIncomeFormData("Entity", "");
     updateIncomeFormData("Category", "");

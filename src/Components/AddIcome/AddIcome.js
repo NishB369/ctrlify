@@ -6,7 +6,7 @@ import { useAppContext } from "../../Context/AppContext";
 
 const AddIncome = ({ setAddIcome }) => {
   const [submit, setSubmit] = useState(false);
-  const { incomeTransactions } = useAppContext();
+  const { incomeTransactions, transactions } = useAppContext();
 
   const handleClose = () => {
     setAddIcome(false);
@@ -17,6 +17,7 @@ const AddIncome = ({ setAddIcome }) => {
       const timer = setTimeout(() => {
         handleClose();
         console.log(incomeTransactions);
+        console.log(transactions);
       }, 3000);
 
       return () => clearTimeout(timer);
