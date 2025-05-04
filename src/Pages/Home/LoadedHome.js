@@ -7,8 +7,11 @@ import AllTransactions from "../../Components/AllTransactions/AllTransactions";
 import AddIncome from "../../Components/AddIcome/AddIcome";
 import AddInvestment from "../../Components/AddSaving/AddInvestment";
 import AddExpense from "../../Components/AddExpense/AddExpense";
+import { useAppContext } from "../../Context/AppContext";
 
 const LoadedHome = () => {
+  const { formData } = useAppContext();
+  console.log(formData);
   const [allTransactions, setAllTransactions] = useState(false);
   const [addIncome, setAddIcome] = useState(false);
   const [addInvestment, setAddInvestment] = useState(false);

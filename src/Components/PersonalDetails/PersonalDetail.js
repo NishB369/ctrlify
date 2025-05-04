@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import { useAppContext } from "../../Context/AppContext";
 
 const PersonalDetail = ({ field, placeholder }) => {
+  const { formData, updateFormData } = useAppContext();
+
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
       <label className="font-semibold">{field}</label>
       <input
+        value={formData.field}
+        onChange={(e) => updateFormData(`${field}`, e.target.value)}
         placeholder={placeholder}
+        required
         type="text"
         className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black"
       ></input>
@@ -13,12 +19,16 @@ const PersonalDetail = ({ field, placeholder }) => {
   );
 };
 
-export const AgeField = () => {
+export const NumericField = ({ field }) => {
+  const { formData, updateFormData } = useAppContext();
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
-      <label className="font-semibold">Age</label>
+      <label className="font-semibold">{field}</label>
       <input
-        placeholder="Enter Age"
+        value={formData.field}
+        onChange={(e) => updateFormData(`${field}`, e.target.value)}
+        placeholder={`Enter ${field}`}
+        required
         type="number"
         className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg"
       ></input>
@@ -27,6 +37,7 @@ export const AgeField = () => {
 };
 
 export const IncomeField = () => {
+  const { formData, updateFormData } = useAppContext();
   const [income, setIcome] = useState(null);
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
@@ -36,18 +47,22 @@ export const IncomeField = () => {
       </div>
       <div className="w-full relative">
         <input
+          value={formData.Income}
+          onChange={(e) => (
+            updateFormData("Income", e.target.value), setIcome(e.target.value)
+          )}
+          required
           type="range"
           className="py-3 w-full"
-          onChange={(e) => {
-            setIcome(e.target.value);
-          }}
           step={1000}
           min={1000}
           max={25000}
         ></input>
         <div className="flex justify-between w-full px-1 -mt-4 text-sm text-gray-600">
           <span className="bi bi-caret-up-fill"> ₹1,000</span>
-          <span>₹25,000 <span className="bi bi-caret-up-fill"></span></span>
+          <span>
+            ₹25,000 <span className="bi bi-caret-up-fill"></span>
+          </span>
         </div>
       </div>
     </div>

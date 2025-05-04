@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router";
 import Profile from "./Pages/Profile/Profile";
 import Notifications from "./Pages/Notifications/Notifications";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import { AppProvider } from "./Context/AppContext";
 
 const appRouter = createBrowserRouter([
   {
@@ -27,4 +28,10 @@ const appRouter = createBrowserRouter([
 ]);
 
 const root = ReactDom.createRoot(document.querySelector("#root"));
-root.render(<RouterProvider router={appRouter} />);
+root.render(
+  <React.StrictMode>
+    <AppProvider>
+      <RouterProvider router={appRouter} />
+    </AppProvider>
+  </React.StrictMode>
+);

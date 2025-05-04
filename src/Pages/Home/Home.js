@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useAppContext } from "../../Context/AppContext";
 import OpeningAnimation from "../../Components/OpeningAnimation/OpeningAnimation";
 import LoadedHome from "./LoadedHome";
+import Profile from "../Profile/Profile";
 
 const Home = () => {
-  // create a state variable to conditionally render the content
-  const [showContent, setShowContent] = useState(true);
+  const { isLoading, isSignedUp, userData, completeLoading } = useAppContext();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
+    completeLoading();
   }, []);
 
   return (
     <div className="w-lvw h-lvh">
-      <OpeningAnimation showContent={showContent} />
-      <div
-        style={{ display: showContent ? "block" : "none" }}
-        className="w-full h-full"
-      >
-        <LoadedHome />
-      </div>
+      {isLoading && <OpeningAnimation />}
+
+      {!isLoading && (
+        <>
+          {!isSignedUp && <Profile shimmer={true} />}
+
+          {isSignedUp && <LoadedHome userData={userData} />}
+        </>
+      )}
     </div>
   );
 };
