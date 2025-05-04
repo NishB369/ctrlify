@@ -1,11 +1,8 @@
 import React from "react";
 import RecentTransaction from "./RecentTransaction";
-import { useAppContext } from "../../Context/AppContext";
 import emptyVid from "../../../public/media/videos/Empty.mp4";
 
-const RecentTransactions = ({ setAllTransactions }) => {
-  const { transactions } = useAppContext();
-
+const RecentTransactions = ({ setAllTransactions, renderList }) => {
   const handleViewAll = () => {
     setAllTransactions(true);
   };
@@ -19,8 +16,8 @@ const RecentTransactions = ({ setAllTransactions }) => {
         </div>
       </div>
       <div className="flex flex-col gap-1 px-6 items-center justify-center">
-        {transactions.length > 0 ? (
-          transactions.map((transaction, index) => (
+        {renderList.length > 0 ? (
+          renderList.map((transaction, index) => (
             <RecentTransaction key={index} data={transaction} />
           ))
         ) : (

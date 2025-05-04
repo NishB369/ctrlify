@@ -169,6 +169,12 @@ export const AppProvider = ({ children }) => {
     setTransactions((prev) => [newTransaction, ...prev]);
   };
 
+  const totalData = [
+    formData["TotalIncome"],
+    formData["TotalInvestment"],
+    formData["TotalExpense"],
+  ];
+
   return (
     <AppContext.Provider
       value={{
@@ -198,6 +204,8 @@ export const AppProvider = ({ children }) => {
 
         transactions,
         addTransaction,
+
+        totalData,
       }}
     >
       {children}

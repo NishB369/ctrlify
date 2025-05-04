@@ -3,9 +3,18 @@ import { Link } from "react-router";
 import Chart from "../../Components/Chart/Chart";
 import RecentTransactions from "../../Components/RecentTransactions/RecentTransactions";
 import AllTransactions from "../../Components/AllTransactions/AllTransactions";
+import { useAppContext } from "../../Context/AppContext";
 
 const Dashboard = () => {
   const [allTransactions, setAllTransactions] = useState(false);
+  const {
+    totalData,
+    incomeTransactions,
+    expenseTransactions,
+    investmentTransactions,
+  } = useAppContext();
+
+  const [clickedTab, setClickedTab] = useState("Income");
 
   const fullMonths = [
     "January",
@@ -78,7 +87,7 @@ const Dashboard = () => {
           className="text-center"
         >
           {months.map((month, index) => (
-            <option key={index}>{`${month} 25`}</option>
+            <option key={index} className="text-sm">{`${month} 25`}</option>
           ))}
         </select>
 
@@ -87,23 +96,58 @@ const Dashboard = () => {
           onClick={handleRightClick}
         ></div>
       </div>
-      <div className="w-full flex items-center justify-between px-4 ">
-        <div className="w-1/3 rounded-l-md py-4 flex flex-col items-center justify-center border-2 border-r-0">
+
+      <div className="w-full flex items-center justify-between px-4">
+        <div
+          className={`w-1/3 rounded-l-md py-4 flex flex-col items-center justify-center border-2 border-black border-r-0 ${
+            clickedTab == "Income" ? "bg-[#0171ff] text-white" : ""
+          } cursor-pointer`}
+          onClick={() => {
+            setClickedTab("Income");
+          }}
+        >
           <div className="text-lg font-semibold">Icome</div>
-          <div className="text-sm">Amount</div>
+          <div className="text-sm">₹{totalData[0]}</div>
         </div>
-        <div className="w-1/3 py-4 flex flex-col items-center justify-center border-2 border-r-0">
+
+        <div
+          className={`w-1/3 py-4 flex flex-col items-center justify-center border-2 border-black border-x- ${
+            clickedTab == "Investment" ? "bg-[#0171ff] text-white" : ""
+          } cursor-pointer`}
+          onClick={() => {
+            setClickedTab("Investment");
+          }}
+        >
           <div className="text-lg font-semibold">Savings</div>
-          <div className="text-sm">Amount</div>
+          <div className="text-sm">₹{totalData[1]}</div>
         </div>
-        <div className="w-1/3 rounded-r-md py-4 flex flex-col items-center justify-center border-2">
+
+        <div
+          className={`w-1/3 py-4 flex flex-col items-center justify-center border-2 border-black border-l-0 rounded-r-md ${
+            clickedTab == "Expense" ? "bg-[#0171ff] text-white" : ""
+          } cursor-pointer`}
+          onClick={() => {
+            setClickedTab("Expense");
+          }}
+        >
           <div className="text-lg font-semibold">Expenses</div>
-          <div className="text-sm">Amount</div>
+          <div className="text-sm">₹{totalData[2]}</div>
         </div>
       </div>
-      <div className="px-4 flex flex-col gap-4">
-        <Chart />
-        <RecentTransactions setAllTransactions={setAllTransactions} />
+      <div className="flex flex-col gap-4">
+        <div className="px-4">
+          <Chart />
+        </div>
+        <RecentTransactions
+          setAllTransactions={setAllTransactions}
+          renderList={
+            clickedTab == "Income"
+              ? incomeTransactions
+              : clickedTab == "Investment"
+              ? investmentTransactions
+              : expenseTransactions
+          }
+        />
         {allTransactions && (
           <AllTransactions setAllTransactions={setAllTransactions} />
         )}

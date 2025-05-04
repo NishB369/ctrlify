@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.2",
+    "@mui/x-charts": "^8.2.0",
     "@parcel/transformer-inline-string": "^2.14.4",
     "@parcel/transformer-raw": "^2.14.4",
     "@parcel/transformer-react-static": "^2.14.4",
