@@ -13,13 +13,13 @@ const PersonalDetail = ({ field, placeholder }) => {
         placeholder={placeholder}
         required
         type="text"
-        className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black"
+        className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black placeholder:text-black/25"
       ></input>
     </div>
   );
 };
 
-export const NumericField = ({ field }) => {
+export const NumericField = ({ field, placeholder }) => {
   const { formData, updateFormData } = useAppContext();
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
@@ -27,10 +27,10 @@ export const NumericField = ({ field }) => {
       <input
         value={formData.field}
         onChange={(e) => updateFormData(`${field}`, e.target.value)}
-        placeholder={`Enter ${field}`}
+        placeholder={placeholder}
         required
         type="number"
-        className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg"
+        className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg placeholder:text-black/25"
       ></input>
     </div>
   );
@@ -42,7 +42,11 @@ export const IncomeField = () => {
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
       <label className="font-semibold">Income</label>
-      <div className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg">
+      <div
+        className={`bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg ${
+          income ? "text-black" : "text-black/25"
+        }`}
+      >
         {income ? `₹${income}` : "Drag the Slider"}
       </div>
       <div className="w-full relative">

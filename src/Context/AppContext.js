@@ -3,15 +3,15 @@ import { createContext, useState, useContext } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSignedUp, setIsSignedUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); //true
+  const [isSignedUp, setIsSignedUp] = useState(true); // false
   const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Age: "",
-    Designation: "",
-    "Current Balance": "",
-    Income: "",
+    Name: "Nishchay",
+    Email: "nishb@gmail.com",
+    Age: 20,
+    Designation: "Frontend Intern",
+    CurrentBalance: 9000,
+    Income: 250000,
   });
 
   const updateFormData = (fieldName, value) => {

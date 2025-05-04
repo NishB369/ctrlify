@@ -12,13 +12,17 @@ const PersonalDetails = ({ shimmer }) => {
         {!shimmer && <div className="text-sm underline">Edit</div>}
       </div>
       <div className="flex flex-col items-start justify-center gap-4">
-        <PersonalDetail field={"Name"} placeholder={"User Name"} />
-        <PersonalDetail field={"Email"} placeholder={"User Email"} />
-        <div className="w-full flex gap-8">
-          <NumericField field={"Age"} />
-          <PersonalDetail field={"Designation"} placeholder={"Designation"} />
+        <PersonalDetail field={"Name"} placeholder={"John Doe"} />
+        <PersonalDetail field={"Email"} placeholder={"johndoe@abc.com"} />
+        <div className="w-full flex gap-4">
+          <div className="w-1/4">
+            <NumericField field={"Age"} placeholder={'25'} />
+          </div>
+          <div className="w-3/4">
+            <PersonalDetail field={"Designation"} placeholder={"SDE"} />
+          </div>
         </div>
-        <NumericField field={"Current Balance"} />
+        <NumericField field={"Current Balance"} placeholder={'10000'}/>
         <IncomeField />
       </div>
       <button

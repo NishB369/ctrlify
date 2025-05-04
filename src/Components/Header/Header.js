@@ -2,8 +2,9 @@ import React, { useState } from "react";
 // why url: works?
 import profilePicUrl from "url:../../../public/media/images/UserProfilePic1.png";
 import { Link } from "react-router";
-
+import {useAppContext} from "../../Context/AppContext"
 const Header = () => {
+  const { formData } = useAppContext();
   const [notificationCount, setNotificationCount] = useState(0);
 
   return (
@@ -13,7 +14,7 @@ const Header = () => {
           <img src={profilePicUrl} className="w-8 h-8 rounded-full" />
         </Link>
         <div>
-          <div className="font-bold text-xl">Hello, User</div>
+          <div className="font-bold text-xl">Hello, {formData.Name}</div>
           <div className="text-xs -mt-1">Welcome Back!</div>
         </div>
       </div>
