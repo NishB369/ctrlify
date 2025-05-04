@@ -24,7 +24,7 @@ const Profile = ({ shimmer }) => {
         <div className="font-semibold text-xl">My Profile</div>
       </div>
       <ProfileMainCard shimmer={shimmer} />
-      <PersonalDetails shimmer={shimmer} />
+      <PersonalDetails />
     </div>
   );
 };

@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { useAppContext } from "../../Context/AppContext";
 
 const PersonalDetail = ({ field, placeholder }) => {
-  const { formData, updateFormData } = useAppContext();
+  const { formData, updateFormData, isEdit } = useAppContext();
 
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
       <label className="font-semibold">{field}</label>
       <input
-        value={formData.field}
+        value={formData[field]}
         onChange={(e) => updateFormData(`${field}`, e.target.value)}
         placeholder={placeholder}
         required
+        disabled={isEdit}
         type="text"
         className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black placeholder:text-black/25"
       ></input>
@@ -20,15 +21,17 @@ const PersonalDetail = ({ field, placeholder }) => {
 };
 
 export const NumericField = ({ field, placeholder }) => {
-  const { formData, updateFormData } = useAppContext();
+  const { formData, updateFormData, isEdit } = useAppContext();
+
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
       <label className="font-semibold">{field}</label>
       <input
-        value={formData.field}
+        value={formData[field]}
         onChange={(e) => updateFormData(`${field}`, e.target.value)}
         placeholder={placeholder}
         required
+        disabled={isEdit}
         type="number"
         className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg placeholder:text-black/25"
       ></input>
@@ -37,8 +40,9 @@ export const NumericField = ({ field, placeholder }) => {
 };
 
 export const IncomeField = () => {
-  const { formData, updateFormData } = useAppContext();
-  const [income, setIcome] = useState(null);
+  const { formData, updateFormData, isEdit } = useAppContext();
+
+  const [income, setIcome] = useState(formData.Income);
   return (
     <div className="flex flex-col items-start justify-center w-full gap-1">
       <label className="font-semibold">Income</label>
@@ -56,6 +60,7 @@ export const IncomeField = () => {
             updateFormData("Income", e.target.value), setIcome(e.target.value)
           )}
           required
+          disabled={isEdit}
           type="range"
           className="py-3 w-full"
           step={1000}
