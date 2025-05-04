@@ -6,7 +6,10 @@ const AllTransactions = ({ setAllTransactions }) => {
     setAllTransactions(false);
   };
   return (
-    <div className="w-[92.5%] flex flex-col items-center justify-start bg-[#121826] absolute top-20 left-[3.75%] rounded-t-3xl px-6 pt-6 opacity-[97.5%] text-white gap-4 bottom-0 pb-0">
+    <div
+      className="w-[92.5%] flex flex-col items-center justify-start
+        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 h-full"
+    >
       <div className="w-full flex items-center justify-between text-xl">
         <div className="font-semibold ">All Transactions</div>
         <span
@@ -25,7 +28,7 @@ const AllTransactions = ({ setAllTransactions }) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 overflow-y-scroll w-full">
+      <div className="flex flex-col gap-4 overflow-y-scroll w-full py-3">
         <RecentTransaction bgOverlay={true} />
         <RecentTransaction bgOverlay={true} />
         <RecentTransaction bgOverlay={true} />

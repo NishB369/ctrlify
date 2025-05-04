@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useAppContext } from "../../Context/AppContext";
 
 const AddIncomeForm = ({ setSubmit }) => {
-  const [incomeChip, setIncomeChip] = useState("");
-  const [categoryChip, setCategoryChip] = useState("");
+  const {
+    incomeFormData,
+    updateIncomeFormData,
+    addIncomeTransaction,
+  } = useAppContext();
 
   const handleSubmitClick = () => {
     setSubmit(true);
-  };
-
-  const handleIncomeChipClick = (val) => {
-    setIncomeChip(val);
-  };
-
-  const handleCategoryChipClick = (val) => {
-    setCategoryChip(val);
+    addIncomeTransaction(incomeFormData);
+    updateIncomeFormData("Amount", "");
+    updateIncomeFormData("Entity", "");
+    updateIncomeFormData("Category", "");
   };
 
   return (
@@ -24,19 +24,19 @@ const AddIncomeForm = ({ setSubmit }) => {
           placeholder="Enter Money"
           type="number"
           className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black font-bold"
-          defaultValue={incomeChip}
+          value={incomeFormData["Amount"]}
           onChange={(e) => {
-            setIncomeChip(e.target.value);
+            updateIncomeFormData("Amount", e.target.value);
           }}
         ></input>
       </div>
-      <div className="flex items-center justify-around gap-2 w-full">
+      <div className="flex items-center justify-around gap-2 -mt-1 w-full">
         {[50, 100, 250, 500].map((item, index) => (
           <span
             key={index}
             className="border-2 border-white py-1 px-3 rounded-lg cursor-pointer"
-            onClick={(e) => {
-              handleIncomeChipClick(item);
+            onClick={() => {
+              updateIncomeFormData("Amount", item);
             }}
           >
             ₹{item}
@@ -46,6 +46,10 @@ const AddIncomeForm = ({ setSubmit }) => {
       <div className="flex flex-col items-start justify-center w-full gap-1">
         <label className="font-semibold">Entity From</label>
         <input
+          value={incomeFormData["Entity"]}
+          onChange={(e) => {
+            updateIncomeFormData("Entity", e.target.value);
+          }}
           placeholder="Received From"
           type="text"
           className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black font-bold"
@@ -54,19 +58,22 @@ const AddIncomeForm = ({ setSubmit }) => {
       <div className="flex flex-col items-start justify-center w-full gap-1">
         <label className="font-semibold">Category</label>
         <input
+          value={incomeFormData["Category"]}
           placeholder="Categorise Transaction"
           type="text"
           className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black font-bold"
-          defaultValue={categoryChip}
+          onChange={(e) => {
+            updateIncomeFormData("Category", e.target.value);
+          }}
         ></input>
       </div>
-      <div className="flex items-center justify-around gap-2 w-full">
+      <div className="flex items-center justify-around gap-2 -mt-1 w-full">
         {["Salary 🤑", "Income ⬇️", "Gift 🎁"].map((item, index) => (
           <span
             key={index}
             className="border-2 border-white py-1 px-2 rounded-lg cursor-pointer"
-            onClick={(e) => {
-              handleCategoryChipClick(item.slice(0, -2));
+            onClick={() => {
+              updateIncomeFormData("Category", item.split(" ")[0]);
             }}
           >
             {item}
@@ -79,12 +86,10 @@ const AddIncomeForm = ({ setSubmit }) => {
           <input
             placeholder="Enter Date"
             type="date"
-            defaultValue={(() => {
-              const now = new Date();
-              return `${now.getFullYear()}-${String(
-                now.getMonth() + 1
-              ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-            })()}
+            value={incomeFormData["Date"]}
+            onChange={(e) => {
+              updateIncomeFormData("Date", e.target.value);
+            }}
             className="bg-gray-100 px-3 py-3 w-full rounded-lg text-black font-bold"
           />
         </div>
@@ -93,12 +98,10 @@ const AddIncomeForm = ({ setSubmit }) => {
           <input
             placeholder="Enter Time"
             type="time"
-            defaultValue={(() => {
-              const now = new Date();
-              return `${String(now.getHours()).padStart(2, "0")}:${String(
-                now.getMinutes()
-              ).padStart(2, "0")}`;
-            })()}
+            value={incomeFormData["Time"]}
+            onChange={(e) => {
+              updateIncomeFormData("Time", e.target.value);
+            }}
             className="bg-gray-100 px-3 py-3 w-full rounded-lg text-black font-bold"
           />
         </div>

@@ -8,7 +8,7 @@ const ProfileMainCard = ({ shimmer }) => {
     ""
   ) : (
     <div className="mt-2">
-      <div className="w-full mt-4 h-[175px] rounded-3xl bg-[#121826] flex items-center justify-center gap-4 relative">
+      <div className="w-full mt-6 h-[175px] rounded-3xl bg-[#121826] flex items-center justify-center gap-4 relative">
         <div className="absolute -top-8">
           <img src={profilePicUrl} className="w-28 h-28 rounded-full" />
         </div>

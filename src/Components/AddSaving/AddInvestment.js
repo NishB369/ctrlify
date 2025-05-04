@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import AddInvestmentVid from "../../../public/media/videos/AddInvestmentVid.mp4";
 import AddInvestmentForm from "./AddInvestmentForm";
 import TickVid from "../../../public/media/videos/Tick.mp4";
+import { useAppContext } from "../../Context/AppContext";
 
 const AddInvestment = ({ setAddInvestment }) => {
   const [submit, setSubmit] = useState(false);
+  const { investmentTransactions } = useAppContext();
 
   const handleClose = () => {
     setAddInvestment(false);
@@ -14,6 +16,7 @@ const AddInvestment = ({ setAddInvestment }) => {
     if (submit) {
       const timer = setTimeout(() => {
         handleClose();
+        console.log(investmentTransactions);
       }, 3000);
 
       return () => clearTimeout(timer);
@@ -24,14 +27,14 @@ const AddInvestment = ({ setAddInvestment }) => {
     <>
       {!submit && (
         <div
-          className="bi bi-x-circle-fill text-xl absolute top-24 right-10 z-10 text-white"
+          className="bi bi-x-circle-fill text-xl absolute top-24 right-8 z-10 text-white"
           onClick={handleClose}
         ></div>
       )}
       <div
         className={`w-[92.5%] flex flex-col items-center ${
           submit ? "justify-center" : `justify-start`
-        } bg-[#121826] absolute top-20 left-[3.75%] rounded-t-3xl px-6 pt-6 opacity-[97.5%] text-white gap-4 bottom-0 pb-0`}
+        } bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 h-full`}
       >
         {submit ? (
           <div className="flex flex-col items-center justify-center gap-6">
@@ -51,7 +54,7 @@ const AddInvestment = ({ setAddInvestment }) => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-1">
               <video
                 src={AddInvestmentVid}
                 autoPlay
@@ -60,7 +63,7 @@ const AddInvestment = ({ setAddInvestment }) => {
                 className="w-20 h-20 rounded-full"
               />
               <div className="text-xl">
-                Add to <span className="font-semibold italic">Income</span>
+                Add to <span className="font-semibold italic">Savings</span>
               </div>
             </div>
             <AddInvestmentForm setSubmit={setSubmit} />

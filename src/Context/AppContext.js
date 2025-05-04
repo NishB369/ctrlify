@@ -12,6 +12,9 @@ export const AppProvider = ({ children }) => {
     Designation: "SDE",
     CurrentBalance: 1234,
     Income: 1200,
+    TotalIncome: 0,
+    TotalExpense: 0,
+    TotalInvestment: 0,
   });
 
   const [isEdit, setIsEdit] = useState(false);
@@ -35,6 +38,127 @@ export const AppProvider = ({ children }) => {
     return () => clearTimeout(timer);
   };
 
+  const currentDate = () => {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(
+      2,
+      "0"
+    )}-${String(now.getDate()).padStart(2, "0")}`;
+  };
+
+  const currentTime = () => {
+    const now = new Date();
+    return `${String(now.getHours()).padStart(2, "0")}:${String(
+      now.getMinutes()
+    ).padStart(2, "0")}`;
+  };
+
+  const [incomeFormData, setIncomeFormData] = useState({
+    Amount: "",
+    Entity: "",
+    Category: "",
+    Date: currentDate(),
+    Time: currentTime(),
+  });
+
+  const updateIncomeFormData = (fieldName, value) => {
+    setIncomeFormData((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+  };
+
+  const [incomeTransactions, setIncomeTransactions] = useState([]);
+
+  const addIncomeTransaction = (transaction) => {
+    const newTransaction = {
+      id: Date.now().toString(),
+      TransactionType: "Income",
+      ...transaction,
+    };
+
+    setIncomeTransactions((prev) => [newTransaction, ...prev]);
+
+    updateFormData(
+      "CurrentBalance",
+      formData.CurrentBalance + Number(transaction.Amount)
+    );
+
+    updateFormData(
+      "TotalIncome",
+      formData.TotalIncome + Number(transaction.Amount)
+    );
+  };
+
+  const [expenseFormData, setExpenseFormData] = useState({
+    Amount: "",
+    Entity: "",
+    Category: "",
+    Date: currentDate(),
+    Time: currentTime(),
+  });
+
+  const updateExpenseFormData = (fieldName, value) => {
+    setExpenseFormData((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+  };
+
+  const [expenseTransactions, setExpenseTransactions] = useState([]);
+
+  const addExpenseTransaction = (transaction) => {
+    const newTransaction = {
+      id: Date.now().toString(),
+      TransactionType: "Expense",
+      ...transaction,
+    };
+
+    setExpenseTransactions((prev) => [newTransaction, ...prev]);
+
+    updateFormData(
+      "CurrentBalance",
+      formData.CurrentBalance - Number(transaction.Amount)
+    );
+
+    updateFormData(
+      "TotalExpense",
+      formData.TotalExpense + Number(transaction.Amount)
+    );
+  };
+
+  const [investmentFormData, setInvestmentFormData] = useState({
+    Amount: "",
+    Entity: "",
+    Category: "",
+    Date: currentDate(),
+    Time: currentTime(),
+  });
+
+  const updateInvestmentFormData = (fieldName, value) => {
+    setInvestmentFormData((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+  };
+
+  const [investmentTransactions, setInvestmentTransactions] = useState([]);
+
+  const addInvestmentTransaction = (transaction) => {
+    const newTransaction = {
+      id: Date.now().toString(),
+      TransactionType: "Investment",
+      ...transaction,
+    };
+
+    setInvestmentTransactions((prev) => [newTransaction, ...prev]);
+
+    updateFormData(
+      "TotalInvestment",
+      formData.TotalInvestment + Number(transaction.Amount)
+    );
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -46,6 +170,21 @@ export const AppProvider = ({ children }) => {
         completeLoading,
         handleSignUp,
         setIsEdit,
+
+        incomeFormData,
+        updateIncomeFormData,
+        addIncomeTransaction,
+        incomeTransactions,
+
+        expenseFormData,
+        updateExpenseFormData,
+        addExpenseTransaction,
+        expenseTransactions,
+
+        investmentFormData,
+        updateInvestmentFormData,
+        addInvestmentTransaction,
+        investmentTransactions,
       }}
     >
       {children}

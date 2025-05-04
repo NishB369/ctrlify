@@ -11,14 +11,13 @@ import { useAppContext } from "../../Context/AppContext";
 
 const LoadedHome = () => {
   const { formData } = useAppContext();
-  console.log(formData);
   const [allTransactions, setAllTransactions] = useState(false);
   const [addIncome, setAddIcome] = useState(false);
   const [addInvestment, setAddInvestment] = useState(false);
   const [addExpense, setAddExpense] = useState(false);
 
   return (
-    <div className="w-full h-full px-4 flex flex-col gap-4 relative">
+    <div className="w-full h-full flex flex-col gap-4 relative">
       <Header />
       <MainCard />
       <QuickActions

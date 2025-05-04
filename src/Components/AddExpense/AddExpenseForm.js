@@ -1,19 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useAppContext } from "../../Context/AppContext";
 
 const AddExpenseForm = ({ setSubmit }) => {
-  const [expenseChip, setExpenseChip] = useState("");
-  const [categoryChip, setCategoryChip] = useState("");
+  const { expenseFormData, updateExpenseFormData, addExpenseTransaction } =
+    useAppContext();
 
   const handleSubmitClick = () => {
     setSubmit(true);
-  };
-
-  const handleExpenseChipClick = (val) => {
-    setExpenseChip(val);
-  };
-
-  const handleCategoryChipClick = (val) => {
-    setCategoryChip(val);
+    addExpenseTransaction(expenseFormData);
+    updateExpenseFormData("Amount", "");
+    updateExpenseFormData("Entity", "");
+    updateExpenseFormData("Category", "");
   };
 
   return (
@@ -24,19 +21,19 @@ const AddExpenseForm = ({ setSubmit }) => {
           placeholder="Enter Money"
           type="number"
           className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black font-bold"
-          defaultValue={expenseChip}
+          value={expenseFormData["Amount"]}
           onChange={(e) => {
-            setExpenseChip(e.target.value);
+            updateExpenseFormData("Amount", e.target.value);
           }}
         ></input>
       </div>
-      <div className="flex items-center justify-around gap-2 w-full">
+      <div className="flex items-center justify-around gap-2 -mt-1 w-full">
         {[50, 100, 250, 500].map((item, index) => (
           <span
             key={index}
             className="border-2 border-white py-1 px-3 rounded-lg cursor-pointer"
             onClick={() => {
-              handleExpenseChipClick(item);
+              updateExpenseFormData("Amount", item);
             }}
           >
             ₹{item}
@@ -46,6 +43,10 @@ const AddExpenseForm = ({ setSubmit }) => {
       <div className="flex flex-col items-start justify-center w-full gap-1">
         <label className="font-semibold">Entity To</label>
         <input
+          value={expenseFormData["Entity"]}
+          onChange={(e) => {
+            updateExpenseFormData("Entity", e.target.value);
+          }}
           placeholder="Spent On"
           type="text"
           className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black font-bold"
@@ -57,16 +58,19 @@ const AddExpenseForm = ({ setSubmit }) => {
           placeholder="Categorise Transaction"
           type="text"
           className="bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black font-bold"
-          defaultValue={categoryChip}
+          value={expenseFormData["Category"]}
+          onChange={(e) => {
+            updateExpenseFormData("Category", e.target.value);
+          }}
         ></input>
       </div>
-      <div className="flex items-center justify-around gap-2 w-full">
+      <div className="flex items-center justify-around gap-2 -mt-1 w-full">
         {["Bills 📃", "Food 😋", "Transfers 💸"].map((item, index) => (
           <span
             key={index}
             className="border-2 border-white py-1 px-2 rounded-lg cursor-pointer"
             onClick={(e) => {
-              handleCategoryChipClick(item.slice(0, -2));
+              updateExpenseFormData("Category", item.slice(0, -2));
             }}
           >
             {item}
@@ -79,12 +83,10 @@ const AddExpenseForm = ({ setSubmit }) => {
           <input
             placeholder="Enter Date"
             type="date"
-            defaultValue={(() => {
-              const now = new Date();
-              return `${now.getFullYear()}-${String(
-                now.getMonth() + 1
-              ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-            })()}
+            value={expenseFormData["Date"]}
+            onChange={(e) => {
+              updateExpenseFormData("Date", e.target.value);
+            }}
             className="bg-gray-100 px-3 py-3 w-full rounded-lg text-black font-bold"
           />
         </div>
@@ -93,12 +95,10 @@ const AddExpenseForm = ({ setSubmit }) => {
           <input
             placeholder="Enter Time"
             type="time"
-            defaultValue={(() => {
-              const now = new Date();
-              return `${String(now.getHours()).padStart(2, "0")}:${String(
-                now.getMinutes()
-              ).padStart(2, "0")}`;
-            })()}
+            value={expenseFormData["Time"]}
+            onChange={(e) => {
+              updateExpenseFormData("Time", e.target.value);
+            }}
             className="bg-gray-100 px-3 py-3 w-full rounded-lg text-black font-bold"
           />
         </div>

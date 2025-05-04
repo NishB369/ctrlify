@@ -4,10 +4,10 @@ import MainCardBanner from "./MainCardBanner";
 
 const MainCard = () => {
   return (
-    <>
+    <div className="w-full px-4">
       <MainCardBalance />
       <MainCardBanner />
-    </>
+    </div>
   );
 };
 

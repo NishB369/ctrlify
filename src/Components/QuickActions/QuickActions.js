@@ -3,7 +3,7 @@ import QuickActionBtn from "./QuickActionBtn";
 
 const QuickActions = ({ setAddIcome, setAddInvestment, setAddExpense }) => {
   return (
-    <div className="w-full py-4 flex items-center justify-around gap-2 -mt-2">
+    <div className="w-full py-4 flex items-center justify-around gap-2 -mt-2 px-4">
       <QuickActionBtn
         icon={"bi bi-plus"}
         type={"Add Income"}

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import AddIcomeVid from "../../../public/media/videos/AddIcomeVid.mp4";
 import TickVid from "../../../public/media/videos/Tick.mp4";
 import AddIncomeForm from "./AddIncomeForm";
+import { useAppContext } from "../../Context/AppContext";
 
 const AddIncome = ({ setAddIcome }) => {
   const [submit, setSubmit] = useState(false);
+  const { incomeTransactions } = useAppContext();
 
   const handleClose = () => {
     setAddIcome(false);
@@ -14,6 +16,7 @@ const AddIncome = ({ setAddIcome }) => {
     if (submit) {
       const timer = setTimeout(() => {
         handleClose();
+        console.log(incomeTransactions);
       }, 3000);
 
       return () => clearTimeout(timer);
@@ -24,14 +27,14 @@ const AddIncome = ({ setAddIcome }) => {
     <>
       {!submit && (
         <div
-          className="bi bi-x-circle-fill text-xl absolute top-24 right-10 z-10 text-white"
+          className="bi bi-x-circle-fill text-xl absolute top-24 right-8 z-10 text-white"
           onClick={handleClose}
         ></div>
       )}
       <div
         className={`w-[92.5%] flex flex-col items-center ${
           submit ? "justify-center" : `justify-start`
-        } bg-[#121826] absolute top-20 left-[3.75%] rounded-t-3xl px-6 pt-6 opacity-[97.5%] text-white gap-4 bottom-0 pb-0`}
+        } bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 h-full`}
       >
         {submit ? (
           <div className="flex flex-col items-center justify-center gap-6">
@@ -51,7 +54,7 @@ const AddIncome = ({ setAddIcome }) => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-1">
               <video
                 src={AddIcomeVid}
                 autoPlay
