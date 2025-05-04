@@ -13,7 +13,7 @@ const AddIncome = ({ setAddIcome }) => {
   useEffect(() => {
     if (submit) {
       const timer = setTimeout(() => {
-        setAddIcome(false);
+        handleClose();
       }, 3000);
 
       return () => clearTimeout(timer);

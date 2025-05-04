@@ -44,7 +44,7 @@ const AddIncomeForm = ({ setSubmit }) => {
         ))}
       </div>
       <div className="flex flex-col items-start justify-center w-full gap-1">
-        <label className="font-semibold">Entity</label>
+        <label className="font-semibold">Entity From</label>
         <input
           placeholder="Received From"
           type="text"
