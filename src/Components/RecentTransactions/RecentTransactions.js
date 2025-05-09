@@ -17,9 +17,11 @@ const RecentTransactions = ({ setAllTransactions, renderList }) => {
       </div>
       <div className="flex flex-col gap-1 px-6 items-center justify-center">
         {renderList.length > 0 ? (
-          renderList.map((transaction, index) => (
-            <RecentTransaction key={index} data={transaction} />
-          ))
+          renderList
+            .slice(0, 3)
+            .map((transaction, index) => (
+              <RecentTransaction key={index} data={transaction} />
+            ))
         ) : (
           <video
             src={emptyVid}

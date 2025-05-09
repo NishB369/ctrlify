@@ -255,13 +255,13 @@ export const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false); //true
   const [isSignedUp, setIsSignedUp] = useState(true); // false
   const [formData, setFormData] = useState({
-    Name: "Nishchay",
-    Email: "nishb@gmail.com ",
-    Age: 20,
-    Designation: "SDE",
+    Name: "",
+    Email: "",
+    Age: "",
+    Designation: "",
     CurrentBalance:
       initialTotalIncome - initialTotalExpense + initialTotalInvestment,
-    Income: 1200,
+    Income: "",
     TotalIncome: initialTotalIncome,
     TotalExpense: initialTotalExpense,
     TotalInvestment: initialTotalInvestment,

@@ -10,6 +10,16 @@
   src: url(../Agrandir-GrandHeavy.otf);
 }
 
+@font-face {
+  font-family: agrandir-wide;
+  src: url(../Agrandir-WideLight.otf);
+}
+
+@font-face {
+  font-family: agrandir-glight;
+  src: url(../Agrandir-GrandLight.otf);
+}
+
 body {
   font-family: "agrandir-reg";
 }
@@ -17,4 +27,5 @@ body {
 body, html{
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }

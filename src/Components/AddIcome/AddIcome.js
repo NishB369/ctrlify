@@ -18,7 +18,7 @@ const AddIncome = ({ setAddIcome }) => {
         handleClose();
         console.log(incomeTransactions);
         console.log(transactions);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
