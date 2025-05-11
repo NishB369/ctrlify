@@ -7,13 +7,8 @@ import Profile from "./Pages/Profile/Profile";
 import Notifications from "./Pages/Notifications/Notifications";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import { AppProvider } from "./Context/AppContext";
-import Landing from "./Pages/Landing/Landing";
 
 const appRouter = createBrowserRouter([
-  {
-    path: "/Landing",
-    element: <Landing/>,
-  },
   {
     path: "/",
     element: <Home />,
