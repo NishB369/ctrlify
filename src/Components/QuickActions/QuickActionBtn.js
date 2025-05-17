@@ -5,7 +5,7 @@ const QuickActionBtn = ({ icon, type, clickState }) => {
     clickState(true);
   };
   return (
-    <div className=" flex flex-col gap-2 items-center">
+    <div className=" flex flex-col gap-2 items-center cursor-pointer">
       <div className="bg-[#0171ff] rounded-full w-fit p-3" onClick={handleClick}>
         <div
           className={`${icon} text-2xl text-white flex items-center justify-center`}

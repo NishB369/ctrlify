@@ -8,7 +8,7 @@ const Header = () => {
   const [notificationCount, setNotificationCount] = useState(0);
 
   return (
-    <div className="flex items-center justify-between pt-4 sticky top-0 bg-white z-10 py-4 w-full px-2 opacity-90">
+    <div className="flex items-center justify-between pt-4 sticky top-0 bg-white z-10 py-4 w-full px-2 md:px-40 opacity-90 md:pt-6">
       <div className="flex items-center justify-center gap-3">
         <Link to="/Profile">
           <img src={profilePicUrl} className="w-8 h-8 rounded-full" />

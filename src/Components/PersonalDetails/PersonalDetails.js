@@ -10,7 +10,7 @@ const PersonalDetails = () => {
   };
 
   return (
-    <div className="mt-2 flex flex-col gap-4 px-4">
+    <div className="mt-2 flex flex-col gap-4 px-4 md:pb-10">
       <div className="flex items-center justify-between">
         <div className="text-lg font-semibold">Personal Details</div>
         {isSignedUp && (
@@ -35,7 +35,7 @@ const PersonalDetails = () => {
       </div>
       <button
         type="submit"
-        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold text-white"
+        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold text-white cursor-pointer"
         onClick={handleSignUp}
       >
         Submit

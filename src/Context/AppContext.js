@@ -252,8 +252,8 @@ export const AppProvider = ({ children }) => {
     initialInvestmentTransactions
   );
 
-  const [isLoading, setIsLoading] = useState(true); //true
-  const [isSignedUp, setIsSignedUp] = useState(false); // false
+  const [isLoading, setIsLoading] = useState(false); //true
+  const [isSignedUp, setIsSignedUp] = useState(true); // false
   const [formData, setFormData] = useState({
     Name: "",
     Email: "",

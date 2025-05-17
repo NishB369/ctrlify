@@ -8,7 +8,7 @@ const Profile = ({ shimmer }) => {
   const { isLoading, isSignedUp } = useAppContext();
 
   return (
-    <div className={`px-4 py-2 flex flex-col ${shimmer ? "gap-0" : "gap-4"}`}>
+    <div className={`px-4 md:px-80 py-2 flex flex-col ${shimmer ? "gap-0" : "gap-4"}`}>
       <div
         className={`flex items-center sticky top-0 bg-white z-10 py-4 w-full px-4 opacity-90 ${
           !isLoading && isSignedUp ? "justify-between" : "justify-center"
@@ -21,7 +21,7 @@ const Profile = ({ shimmer }) => {
             </div>
           </Link>
         )}
-        <div className="font-semibold text-xl">My Profile</div>
+        <div className="font-semibold text-xl md:text-3xl">My Profile</div>
       </div>
       <ProfileMainCard shimmer={shimmer} />
       <PersonalDetails />

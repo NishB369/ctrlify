@@ -17,28 +17,35 @@ const LoadedHome = () => {
   const [addExpense, setAddExpense] = useState(false);
 
   return (
-    <div className="w-full h-full flex flex-col gap-4 relative">
+    <>
       <Header />
-      <MainCard />
-      <QuickActions
-        setAddIcome={setAddIcome}
-        setAddInvestment={setAddInvestment}
-        setAddExpense={setAddExpense}
-      />
-      <RecentTransactions
-        setAllTransactions={setAllTransactions}
-        renderList={transactions}
-      />
-      {allTransactions && (
-        <AllTransactions
-          setAllTransactions={setAllTransactions}
-          renderList={transactions}
-        />
-      )}
-      {addIncome && <AddIncome setAddIcome={setAddIcome} />}
-      {addInvestment && <AddInvestment setAddInvestment={setAddInvestment} />}
-      {addExpense && <AddExpense setAddExpense={setAddExpense} />}
-    </div>
+
+      <div className="w-full h-full md:h-auto flex flex-col md:flex-row gap-4 md:gap-10 relative md:mt-6 md:px-40">
+        <div className="flex flex-col gap-4 md:gap-8 md:w-[50%]">
+          <MainCard />
+          <QuickActions
+            setAddIcome={setAddIcome}
+            setAddInvestment={setAddInvestment}
+            setAddExpense={setAddExpense}
+          />
+        </div>
+        <div className="md:w-[50%]">
+          <RecentTransactions
+            setAllTransactions={setAllTransactions}
+            renderList={transactions}
+          />
+        </div>
+        {allTransactions && (
+          <AllTransactions
+            setAllTransactions={setAllTransactions}
+            renderList={transactions}
+          />
+        )}
+        {addIncome && <AddIncome setAddIcome={setAddIcome} />}
+        {addInvestment && <AddInvestment setAddInvestment={setAddInvestment} />}
+        {addExpense && <AddExpense setAddExpense={setAddExpense} />}
+      </div>
+    </>
   );
 };
 

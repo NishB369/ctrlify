@@ -29,7 +29,7 @@ const MainCardBalance = () => {
           <div className="font-semibold underline">
             {view ? "Hide" : "View"} Balance
           </div>
-          <div className={`${view ? "bi bi-eye-slash" : "bi bi-eye"}`}></div>
+          <div className={`${view ? "bi bi-eye-slash" : "bi bi-eye"} cursor-pointer`}></div>
         </div>
       </div>
     </div>

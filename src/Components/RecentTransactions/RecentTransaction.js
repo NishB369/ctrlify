@@ -17,7 +17,7 @@ const RecentTransaction = ({ bgOverlay, data }) => {
 
   return (
     <div
-      className={`flex items-center justify-between w-full px-2 py-2 ${
+      className={`flex items-center justify-between w-full py-2 ${
         bgOverlay ? "bg-[#016fff4e] rounded-lg" : ""
       }`}
     >
@@ -37,7 +37,7 @@ const RecentTransaction = ({ bgOverlay, data }) => {
           {getTransactionStyles(data["TransactionType"]).symbol} ₹
           {data["Amount"]}
         </span>
-        <span className="ml-3 bi bi-gear-fill text-gray-500"></span>
+        <span className="ml-3 bi bi-gear-fill text-gray-500 cursor-pointer"></span>
       </div>
     </div>
   );
