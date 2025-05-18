@@ -1,14 +1,16 @@
 import React from "react";
 import RecentTransaction from "../RecentTransactions/RecentTransaction";
 
-const AllTransactions = ({ setAllTransactions, renderList }) => {
+const AllTransactions = ({ setAllTransactions, renderList, ctrlPosition }) => {
   const handleCloseTransactions = () => {
     setAllTransactions(false);
   };
   return (
     <div
-      className="w-[92.5%] md:mx-20 md:w-[80%] flex flex-col items-center justify-start
-        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-4 md:px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 md:bottom-0 h-full"
+      className={`w-[92.5%] md:mx-20 md:w-[80%] flex flex-col items-center justify-start
+        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-4 md:px-6 pt-4 opacity-[97.5%] text-white gap-2 ${
+          ctrlPosition ? "-bottom-20 md:bottom-0" : "bottom-0"
+        } h-full`}
     >
       <div className="w-full flex items-center justify-between text-xl md:py-2">
         <div className="font-semibold ">All Transactions</div>

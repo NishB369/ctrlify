@@ -175,6 +175,7 @@ const Dashboard = () => {
         {isMobile && allTransactions && (
           <AllTransactions
             setAllTransactions={setAllTransactions}
+            ctrlPosition={true}
             renderList={
               clickedTab == "Income"
                 ? incomeTransactions
