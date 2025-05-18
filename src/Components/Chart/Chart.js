@@ -10,7 +10,19 @@ export default function Chart({ clickedTab }) {
     useAppContext();
 
   const daysInMonth = 30;
+  // Initialize dailyAmounts with null
   const dailyAmounts = Array(daysInMonth).fill(null);
+  
+  // Get current date to determine which days should be 0 vs null
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate();
+  
+  // Set past days with no transactions to 0, leave future days as null
+  for (let i = 0; i < daysInMonth; i++) {
+    if (i < currentDay) {
+      dailyAmounts[i] = 0;
+    }
+  }
 
   let clickedTabTransactions;
 
@@ -35,7 +47,15 @@ export default function Chart({ clickedTab }) {
   clickedTabTransactions.forEach((transaction) => {
     const transactionDate = new Date(transaction.Date);
     const day = transactionDate.getDate() - 1;
-    dailyAmounts[day] += parseFloat(transaction.Amount);
+    
+    // Make sure the day index is valid
+    if (day >= 0 && day < daysInMonth) {
+      // If this is the first transaction for this day, initialize to 0 first
+      if (dailyAmounts[day] === null) {
+        dailyAmounts[day] = 0;
+      }
+      dailyAmounts[day] += parseFloat(transaction.Amount);
+    }
   });
 
   const xAxisData = Array.from({ length: daysInMonth }, (_, i) => i + 1);

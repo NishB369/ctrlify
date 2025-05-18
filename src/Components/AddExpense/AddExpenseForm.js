@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppContext } from "../../Context/AppContext";
 
 const AddExpenseForm = ({ setSubmit }) => {
-  const { expenseFormData, updateExpenseFormData, addExpenseTransaction, addTransaction } =
-    useAppContext();
+  const {
+    expenseFormData,
+    updateExpenseFormData,
+    addExpenseTransaction,
+    addTransaction,
+  } = useAppContext();
+
+  const setCurrentDateTime = () => {
+    const now = new Date();
+
+    const currentDate = now.toISOString().split("T")[0];
+
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const currentTime = `${hours}:${minutes}`;
+
+    updateExpenseFormData("Date", currentDate);
+    updateExpenseFormData("Time", currentTime);
+  };
+
+  useEffect(() => {
+    setCurrentDateTime();
+  }, []);
 
   const handleSubmitClick = () => {
     setSubmit(true);
     addExpenseTransaction(expenseFormData);
-    addTransaction(expenseFormData)
+    addTransaction(expenseFormData);
     updateExpenseFormData("Amount", "");
     updateExpenseFormData("Entity", "");
     updateExpenseFormData("Category", "");
+    setCurrentDateTime();
   };
 
   return (
@@ -110,7 +132,7 @@ const AddExpenseForm = ({ setSubmit }) => {
       </div>
       <button
         type="submit"
-        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold"
+        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold cursor-pointer"
         onClick={handleSubmitClick}
       >
         Submit

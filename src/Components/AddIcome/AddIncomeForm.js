@@ -9,6 +9,23 @@ const AddIncomeForm = ({ setSubmit }) => {
     addTransaction,
   } = useAppContext();
 
+  const setCurrentDateTime = () => {
+    const now = new Date();
+
+    const currentDate = now.toISOString().split("T")[0];
+
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const currentTime = `${hours}:${minutes}`;
+
+    updateIncomeFormData("Date", currentDate);
+    updateIncomeFormData("Time", currentTime);
+  };
+
+  useEffect(() => {
+    setCurrentDateTime();
+  }, []);
+
   const handleSubmitClick = () => {
     setSubmit(true);
     addIncomeTransaction(incomeFormData);
@@ -16,6 +33,7 @@ const AddIncomeForm = ({ setSubmit }) => {
     updateIncomeFormData("Amount", "");
     updateIncomeFormData("Entity", "");
     updateIncomeFormData("Category", "");
+    setCurrentDateTime();
   };
 
   return (
@@ -114,7 +132,7 @@ const AddIncomeForm = ({ setSubmit }) => {
       </div>
       <button
         type="submit"
-        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold"
+        className="bg-[#0171ff] w-full py-3 rounded-md font-semibold cursor-pointer"
         onClick={handleSubmitClick}
       >
         Submit
