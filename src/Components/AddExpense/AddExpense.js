@@ -28,14 +28,14 @@ const AddExpense = ({ setAddExpense }) => {
     <>
       {!submit && (
         <div
-          className="bi bi-x-circle-fill text-xl absolute top-24 right-8 z-10 text-white"
+          className="bi bi-x-circle-fill text-xl absolute top-24 md:top-4 right-8 md:right-44 z-10 text-white cursor-pointer"
           onClick={handleClose}
         ></div>
       )}
       <div
-        className={`w-[92.5%] flex flex-col items-center ${
+        className={`quickAction w-[92.5%] md:mx-20 md:w-[80%] flex flex-col items-center ${
           submit ? "justify-center" : `justify-start`
-        } bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 h-full`}
+        } bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 md:bottom-0 h-full`}
       >
         {submit ? (
           <div className="flex flex-col items-center justify-center gap-6">

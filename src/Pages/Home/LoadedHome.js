@@ -20,7 +20,7 @@ const LoadedHome = () => {
     <>
       <Header />
 
-      <div className="w-full h-full md:h-auto flex flex-col md:flex-row gap-4 md:gap-10 relative md:mt-6 md:px-40">
+      <div className="w-full h-full flex flex-col md:flex-row gap-4 md:gap-10 relative md:mt-6 md:px-40">
         <div className="flex flex-col gap-4 md:gap-8 md:w-[50%]">
           <MainCard />
           <QuickActions

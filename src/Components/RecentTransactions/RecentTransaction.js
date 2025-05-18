@@ -18,7 +18,7 @@ const RecentTransaction = ({ bgOverlay, data }) => {
   return (
     <div
       className={`flex items-center justify-between w-full py-2 ${
-        bgOverlay ? "bg-[#016fff4e] rounded-lg" : ""
+        bgOverlay ? "bg-[#016fff4e] rounded-lg px-4" : ""
       }`}
     >
       <div className="flex items-center justify-center gap-3">

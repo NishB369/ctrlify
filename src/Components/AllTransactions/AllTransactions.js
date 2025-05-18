@@ -7,13 +7,13 @@ const AllTransactions = ({ setAllTransactions, renderList }) => {
   };
   return (
     <div
-      className="w-[92.5%] flex flex-col items-center justify-start
-        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 h-full"
+      className="w-[92.5%] md:mx-20 md:w-[80%] flex flex-col items-center justify-start
+        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 md:bottom-0 h-full"
     >
-      <div className="w-full flex items-center justify-between text-xl">
+      <div className="w-full flex items-center justify-between text-xl md:py-2">
         <div className="font-semibold ">All Transactions</div>
         <span
-          className="bi bi-x-circle-fill"
+          className="bi bi-x-circle-fill cursor-pointer"
           onClick={handleCloseTransactions}
         ></span>
       </div>
@@ -23,8 +23,8 @@ const AllTransactions = ({ setAllTransactions, renderList }) => {
           placeholder="Search"
           className="bg-gray-100 rounded-l-lg py-2 w-[85%] text-black/50 pl-3 pt-3 font-semibold"
         ></input>
-        <div className="bg-gray-100 w-[15%] rounded-r-lg py-2 pt-3 px-3 shadow-2xl shadow-black flex items-center justify-center">
-          <span className="bi bi-search text-black"></span>
+        <div className="bg-[#1071ff]/50 w-[15%] rounded-r-lg py-2 pt-3 px-3 shadow-2xl shadow-black flex items-center justify-center cursor-pointer">
+          <span className="bi bi-search text-white"></span>
         </div>
       </div>
 
