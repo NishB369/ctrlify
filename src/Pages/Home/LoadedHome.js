@@ -33,6 +33,7 @@ const LoadedHome = () => {
           <RecentTransactions
             setAllTransactions={setAllTransactions}
             renderList={transactions}
+            webLength={7}
           />
         </div>
         {allTransactions && (

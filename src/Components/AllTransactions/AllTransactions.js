@@ -8,7 +8,7 @@ const AllTransactions = ({ setAllTransactions, renderList }) => {
   return (
     <div
       className="w-[92.5%] md:mx-20 md:w-[80%] flex flex-col items-center justify-start
-        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 md:bottom-0 h-full"
+        bg-[#121826] absolute left-[3.75%] rounded-t-3xl px-4 md:px-6 pt-4 opacity-[97.5%] text-white gap-2 -bottom-20 md:bottom-0 h-full"
     >
       <div className="w-full flex items-center justify-between text-xl md:py-2">
         <div className="font-semibold ">All Transactions</div>
@@ -18,7 +18,7 @@ const AllTransactions = ({ setAllTransactions, renderList }) => {
         ></span>
       </div>
 
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full flex items-center justify-center mt-2">
         <input
           placeholder="Search"
           className="bg-gray-100 rounded-l-lg py-2 w-[85%] text-black/50 pl-3 pt-3 font-semibold"
