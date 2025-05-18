@@ -252,7 +252,7 @@ export const AppProvider = ({ children }) => {
     initialInvestmentTransactions
   );
 
-  const [isLoading, setIsLoading] = useState(false); //true
+  const [isLoading, setIsLoading] = useState(true); //true
   const [isSignedUp, setIsSignedUp] = useState(false); // false
   const [formData, setFormData] = useState({
     Name: "",
@@ -447,19 +447,23 @@ export const AppProvider = ({ children }) => {
         updateIncomeFormData,
         addIncomeTransaction,
         incomeTransactions,
+        setIncomeTransactions,
 
         expenseFormData,
         updateExpenseFormData,
         addExpenseTransaction,
         expenseTransactions,
+        setExpenseTransactions,
 
         investmentFormData,
         updateInvestmentFormData,
         addInvestmentTransaction,
         investmentTransactions,
+        setInvestmentTransactions,
 
         transactions,
         addTransaction,
+        setTransactions,
 
         totalData,
       }}

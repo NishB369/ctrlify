@@ -20,7 +20,7 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-center gap-1">
         <Link to="/Notifications">
-          <div className="w-8 h-8 border rounded-full flex items-center justify-center mr-2">
+          <div className="w-8 h-8 border rounded-full flex items-center justify-center mr-2 hidden">
             <span className="bi bi-bell mt-1"></span>
             {notificationCount > 0 && (
               <div className="bg-[#0171ff] top-3 right-5 w-4 h-4 absolute rounded-full text-[10px] font-bold text-white flex items-center justify-center pt-[2px]">
