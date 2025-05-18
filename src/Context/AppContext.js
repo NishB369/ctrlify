@@ -234,40 +234,137 @@ export const AppProvider = ({ children }) => {
     }, 0);
   };
 
-  const allInitialTransactions = [
-    ...initialIncomeTransactions.map((t) => ({ ...t })),
-    ...initialExpenseTransactions.map((t) => ({ ...t })),
-    ...initialInvestmentTransactions.map((t) => ({ ...t })),
-  ];
+  const getAllTransactions = (income, expense, investment) => {
+    const allTransactions = [
+      ...income.map((t) => ({ ...t })),
+      ...expense.map((t) => ({ ...t })),
+      ...investment.map((t) => ({ ...t })),
+    ];
 
-  allInitialTransactions.sort((a, b) => {
-    const dateA = new Date(`${a.Date}T${a.Time}`);
-    const dateB = new Date(`${b.Date}T${b.Time}`);
-    return dateB - dateA;
-  });
+    allTransactions.sort((a, b) => {
+      const dateA = new Date(`${a.Date}T${a.Time}`);
+      const dateB = new Date(`${b.Date}T${b.Time}`);
+      return dateB - dateA;
+    });
 
-  const initialTotalIncome = calculateTotalAmount(initialIncomeTransactions);
-  const initialTotalExpense = calculateTotalAmount(initialExpenseTransactions);
-  const initialTotalInvestment = calculateTotalAmount(
-    initialInvestmentTransactions
+    return allTransactions;
+  };
+
+  const loadFromLocalStorage = (key, initialData) => {
+    try {
+      const storedData = localStorage.getItem(key);
+      return storedData ? JSON.parse(storedData) : initialData;
+    } catch (error) {
+      console.error(`Error loading ${key} from localStorage:`, error);
+      return initialData;
+    }
+  };
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSignedUp, setIsSignedUp] = useState(
+    loadFromLocalStorage("isSignedUp", false)
   );
 
-  const [isLoading, setIsLoading] = useState(true); //true
-  const [isSignedUp, setIsSignedUp] = useState(false); // false
-  const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Age: "",
-    Designation: "",
-    CurrentBalance:
-      initialTotalIncome - initialTotalExpense + initialTotalInvestment,
-    Income: "",
-    TotalIncome: initialTotalIncome,
-    TotalExpense: initialTotalExpense,
-    TotalInvestment: initialTotalInvestment,
-  });
+  const [incomeTransactions, setIncomeTransactions] = useState(
+    loadFromLocalStorage("incomeTransactions", initialIncomeTransactions)
+  );
 
-  const [isEdit, setIsEdit] = useState(false);
+  const [expenseTransactions, setExpenseTransactions] = useState(
+    loadFromLocalStorage("expenseTransactions", initialExpenseTransactions)
+  );
+
+  const [investmentTransactions, setInvestmentTransactions] = useState(
+    loadFromLocalStorage(
+      "investmentTransactions",
+      initialInvestmentTransactions
+    )
+  );
+
+  const loadedTotalIncome = calculateTotalAmount(incomeTransactions);
+  const loadedTotalExpense = calculateTotalAmount(expenseTransactions);
+  const loadedTotalInvestment = calculateTotalAmount(investmentTransactions);
+
+  const [formData, setFormData] = useState(
+    loadFromLocalStorage("formData", {
+      Name: "",
+      Email: "",
+      Age: "",
+      Designation: "",
+      CurrentBalance:
+        loadedTotalIncome - loadedTotalExpense + loadedTotalInvestment,
+      Income: "",
+      TotalIncome: loadedTotalIncome,
+      TotalExpense: loadedTotalExpense,
+      TotalInvestment: loadedTotalInvestment,
+    })
+  );
+
+  const [isEdit, setIsEdit] = useState(loadFromLocalStorage("isEdit", false));
+
+  const [transactions, setTransactions] = useState(
+    getAllTransactions(
+      incomeTransactions,
+      expenseTransactions,
+      investmentTransactions
+    )
+  );
+
+  useEffect(() => {
+    localStorage.setItem("isSignedUp", JSON.stringify(isSignedUp));
+  }, [isSignedUp]);
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
+
+  useEffect(() => {
+    localStorage.setItem("isEdit", JSON.stringify(isEdit));
+  }, [isEdit]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "incomeTransactions",
+      JSON.stringify(incomeTransactions)
+    );
+
+    setTransactions(
+      getAllTransactions(
+        incomeTransactions,
+        expenseTransactions,
+        investmentTransactions
+      )
+    );
+  }, [incomeTransactions]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "expenseTransactions",
+      JSON.stringify(expenseTransactions)
+    );
+
+    setTransactions(
+      getAllTransactions(
+        incomeTransactions,
+        expenseTransactions,
+        investmentTransactions
+      )
+    );
+  }, [expenseTransactions]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "investmentTransactions",
+      JSON.stringify(investmentTransactions)
+    );
+
+    setTransactions(
+      getAllTransactions(
+        incomeTransactions,
+        expenseTransactions,
+        investmentTransactions
+      )
+    );
+  }, [investmentTransactions]);
 
   const updateFormData = (fieldName, value) => {
     setFormData((prev) => ({
@@ -319,10 +416,6 @@ export const AppProvider = ({ children }) => {
     }));
   };
 
-  const [incomeTransactions, setIncomeTransactions] = useState(
-    initialIncomeTransactions
-  );
-
   const addIncomeTransaction = (transaction) => {
     const newTransaction = {
       id: Date.now().toString(),
@@ -340,6 +433,8 @@ export const AppProvider = ({ children }) => {
       "TotalIncome",
       formData.TotalIncome + Number(transaction.Amount)
     );
+
+    addTransaction(newTransaction);
   };
 
   const [expenseFormData, setExpenseFormData] = useState({
@@ -358,10 +453,6 @@ export const AppProvider = ({ children }) => {
     }));
   };
 
-  const [expenseTransactions, setExpenseTransactions] = useState(
-    initialExpenseTransactions
-  );
-
   const addExpenseTransaction = (transaction) => {
     const newTransaction = {
       id: Date.now().toString(),
@@ -379,6 +470,8 @@ export const AppProvider = ({ children }) => {
       "TotalExpense",
       formData.TotalExpense + Number(transaction.Amount)
     );
+
+    addTransaction(newTransaction);
   };
 
   const [investmentFormData, setInvestmentFormData] = useState({
@@ -397,10 +490,6 @@ export const AppProvider = ({ children }) => {
     }));
   };
 
-  const [investmentTransactions, setInvestmentTransactions] = useState(
-    initialInvestmentTransactions
-  );
-
   const addInvestmentTransaction = (transaction) => {
     const newTransaction = {
       id: Date.now().toString(),
@@ -413,16 +502,23 @@ export const AppProvider = ({ children }) => {
       "TotalInvestment",
       formData.TotalInvestment + Number(transaction.Amount)
     );
-  };
 
-  const [transactions, setTransactions] = useState(allInitialTransactions);
+    addTransaction(newTransaction);
+  };
 
   const addTransaction = (transaction) => {
     const newTransaction = {
       ...transaction,
     };
 
-    setTransactions((prev) => [newTransaction, ...prev]);
+    setTransactions((prev) => {
+      const updatedTransactions = [newTransaction, ...prev];
+      return updatedTransactions.sort((a, b) => {
+        const dateA = new Date(`${a.Date}T${a.Time}`);
+        const dateB = new Date(`${b.Date}T${b.Time}`);
+        return dateB - dateA;
+      });
+    });
   };
 
   const totalData = [
@@ -430,6 +526,46 @@ export const AppProvider = ({ children }) => {
     formData["TotalInvestment"],
     formData["TotalExpense"],
   ];
+
+  const resetAppData = () => {
+    localStorage.clear();
+
+    setIsSignedUp(false);
+    setIsEdit(false);
+
+    const initialTotalIncome = calculateTotalAmount(initialIncomeTransactions);
+    const initialTotalExpense = calculateTotalAmount(
+      initialExpenseTransactions
+    );
+    const initialTotalInvestment = calculateTotalAmount(
+      initialInvestmentTransactions
+    );
+
+    setFormData({
+      Name: "",
+      Email: "",
+      Age: "",
+      Designation: "",
+      CurrentBalance:
+        initialTotalIncome - initialTotalExpense + initialTotalInvestment,
+      Income: "",
+      TotalIncome: initialTotalIncome,
+      TotalExpense: initialTotalExpense,
+      TotalInvestment: initialTotalInvestment,
+    });
+
+    setIncomeTransactions(initialIncomeTransactions);
+    setExpenseTransactions(initialExpenseTransactions);
+    setInvestmentTransactions(initialInvestmentTransactions);
+
+    setTransactions(
+      getAllTransactions(
+        initialIncomeTransactions,
+        initialExpenseTransactions,
+        initialInvestmentTransactions
+      )
+    );
+  };
 
   return (
     <AppContext.Provider
@@ -466,6 +602,7 @@ export const AppProvider = ({ children }) => {
         setTransactions,
 
         totalData,
+        resetAppData,
       }}
     >
       {children}
