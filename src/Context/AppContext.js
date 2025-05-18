@@ -253,7 +253,7 @@ export const AppProvider = ({ children }) => {
   );
 
   const [isLoading, setIsLoading] = useState(false); //true
-  const [isSignedUp, setIsSignedUp] = useState(true); // false
+  const [isSignedUp, setIsSignedUp] = useState(false); // false
   const [formData, setFormData] = useState({
     Name: "",
     Email: "",
