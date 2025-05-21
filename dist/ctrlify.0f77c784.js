@@ -16242,228 +16242,9 @@ var _s = $RefreshSig$(), _s1 = $RefreshSig$();
 const AppContext = /*#__PURE__*/ (0, _react.createContext)();
 const AppProvider = ({ children })=>{
     _s();
-    const initialIncomeTransactions = [
-        {
-            id: "4",
-            TransactionType: "Income",
-            Amount: "300",
-            Entity: "Gift",
-            Category: "Family",
-            Date: "2025-05-04",
-            Time: "20:15"
-        },
-        {
-            id: "3",
-            TransactionType: "Income",
-            Amount: "500",
-            Entity: "Investment Return",
-            Category: "Investments",
-            Date: "2025-05-03",
-            Time: "11:45"
-        },
-        {
-            id: "2",
-            TransactionType: "Income",
-            Amount: "250",
-            Entity: "Freelance Project",
-            Category: "Side Hustle",
-            Date: "2025-05-02",
-            Time: "15:30"
-        },
-        {
-            id: "1",
-            TransactionType: "Income",
-            Amount: "1000",
-            Entity: "Salary",
-            Category: "Job",
-            Date: "2025-05-01",
-            Time: "09:00"
-        }
-    ];
-    const initialExpenseTransactions = [
-        {
-            id: "1",
-            TransactionType: "Expense",
-            Amount: "50",
-            Entity: "Groceries",
-            Category: "Food",
-            Date: "2025-05-04",
-            Time: "10:15"
-        },
-        {
-            id: "2",
-            TransactionType: "Expense",
-            Amount: "120",
-            Entity: "Restaurant",
-            Category: "Food",
-            Date: "2025-05-04",
-            Time: "19:30"
-        },
-        {
-            id: "3",
-            TransactionType: "Expense",
-            Amount: "200",
-            Entity: "Shopping",
-            Category: "Clothing",
-            Date: "2025-05-03",
-            Time: "14:00"
-        },
-        {
-            id: "4",
-            TransactionType: "Expense",
-            Amount: "75",
-            Entity: "Taxi",
-            Category: "Transport",
-            Date: "2025-05-03",
-            Time: "22:10"
-        },
-        {
-            id: "5",
-            TransactionType: "Expense",
-            Amount: "30",
-            Entity: "Coffee",
-            Category: "Food",
-            Date: "2025-05-02",
-            Time: "08:45"
-        },
-        {
-            id: "6",
-            TransactionType: "Expense",
-            Amount: "400",
-            Entity: "Electronics",
-            Category: "Gadgets",
-            Date: "2025-05-02",
-            Time: "17:20"
-        },
-        {
-            id: "7",
-            TransactionType: "Expense",
-            Amount: "60",
-            Entity: "Books",
-            Category: "Education",
-            Date: "2025-05-01",
-            Time: "11:30"
-        },
-        {
-            id: "8",
-            TransactionType: "Expense",
-            Amount: "90",
-            Entity: "Gas",
-            Category: "Transport",
-            Date: "2025-05-01",
-            Time: "15:50"
-        },
-        {
-            id: "9",
-            TransactionType: "Expense",
-            Amount: "35",
-            Entity: "Snacks",
-            Category: "Food",
-            Date: "2025-05-01",
-            Time: "20:25"
-        },
-        {
-            id: "10",
-            TransactionType: "Expense",
-            Amount: "100",
-            Entity: "Medical",
-            Category: "Health",
-            Date: "2025-05-01",
-            Time: "09:10"
-        }
-    ];
-    const initialInvestmentTransactions = [
-        {
-            id: "1",
-            TransactionType: "Investment",
-            Amount: "500",
-            Entity: "Stocks",
-            Category: "Equity",
-            Date: "2025-05-04",
-            Time: "10:00"
-        },
-        {
-            id: "2",
-            TransactionType: "Investment",
-            Amount: "300",
-            Entity: "Mutual Fund",
-            Category: "Debt",
-            Date: "2025-05-04",
-            Time: "16:30"
-        },
-        {
-            id: "3",
-            TransactionType: "Investment",
-            Amount: "200",
-            Entity: "Gold",
-            Category: "Commodities",
-            Date: "2025-05-03",
-            Time: "12:45"
-        },
-        {
-            id: "4",
-            TransactionType: "Investment",
-            Amount: "150",
-            Entity: "Crypto",
-            Category: "Digital",
-            Date: "2025-05-03",
-            Time: "21:10"
-        },
-        {
-            id: "5",
-            TransactionType: "Investment",
-            Amount: "400",
-            Entity: "Fixed Deposit",
-            Category: "Savings",
-            Date: "2025-05-02",
-            Time: "09:30"
-        },
-        {
-            id: "6",
-            TransactionType: "Investment",
-            Amount: "350",
-            Entity: "Real Estate Fund",
-            Category: "Property",
-            Date: "2025-05-02",
-            Time: "18:20"
-        },
-        {
-            id: "7",
-            TransactionType: "Investment",
-            Amount: "250",
-            Entity: "Pension Fund",
-            Category: "Retirement",
-            Date: "2025-05-01",
-            Time: "11:00"
-        },
-        {
-            id: "8",
-            TransactionType: "Investment",
-            Amount: "600",
-            Entity: "Savings Account",
-            Category: "Savings",
-            Date: "2025-05-01",
-            Time: "14:45"
-        },
-        {
-            id: "9",
-            TransactionType: "Investment",
-            Amount: "100",
-            Entity: "ETF",
-            Category: "Equity",
-            Date: "2025-05-01",
-            Time: "17:30"
-        },
-        {
-            id: "10",
-            TransactionType: "Investment",
-            Amount: "450",
-            Entity: "Bonds",
-            Category: "Debt",
-            Date: "2025-05-01",
-            Time: "20:15"
-        }
-    ];
+    const initialIncomeTransactions = [];
+    const initialExpenseTransactions = [];
+    const initialInvestmentTransactions = [];
     const calculateTotalAmount = (transactions)=>{
         return transactions.reduce((total, transaction)=>{
             return total + Number(transaction.Amount);
@@ -16733,7 +16514,7 @@ const AppProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "src/Context/AppContext.js",
-        lineNumber: 571,
+        lineNumber: 352,
         columnNumber: 5
     }, undefined);
 };
@@ -19350,7 +19131,7 @@ const Header = ()=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                         to: "/Notifications",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "w-8 h-8 border rounded-full flex items-center justify-center mr-2 hidden",
+                            className: "w-8 h-8 border rounded-full items-center justify-center mr-2 hidden",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     className: "bi bi-bell mt-1"
@@ -33486,7 +33267,7 @@ var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$();
 const ErrorMessage = ({ message })=>{
     if (!message) return null;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "text-xs text-red-500 mt-1",
+        className: "text-xs text-[#121826] mt-1",
         children: message
     }, void 0, false, {
         fileName: "src/Components/PersonalDetails/PersonalDetail.js",
@@ -33532,7 +33313,7 @@ const PersonalDetail = ({ field, placeholder, validationRules })=>{
                 required: true,
                 disabled: isEdit,
                 type: "text",
-                className: `bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black placeholder:text-black/25 ${error ? "border border-red-500" : ""}`
+                className: `bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black placeholder:text-black/25 ${error ? "border border-[#121826]" : ""}`
             }, void 0, false, {
                 fileName: "src/Components/PersonalDetails/PersonalDetail.js",
                 lineNumber: 44,
@@ -33596,7 +33377,7 @@ const NumericField = ({ field, placeholder, validationRules })=>{
                 required: true,
                 disabled: isEdit,
                 type: "number",
-                className: `bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg placeholder:text-black/25 ${error ? "border border-red-500" : ""}`
+                className: `bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg placeholder:text-black/25 ${error ? "border border-[#121826]" : ""}`
             }, void 0, false, {
                 fileName: "src/Components/PersonalDetails/PersonalDetail.js",
                 lineNumber: 103,
@@ -33653,7 +33434,7 @@ const IncomeField = ({ validationRules })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: `bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg ${income ? "text-black" : "text-black/25"} ${error ? "border border-red-500" : ""}`,
+                className: `bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg ${income ? "text-black" : "text-black/25"} ${error ? "border border-[#121826]" : ""}`,
                 children: income ? `\u{20B9}${income}` : "Drag the Slider"
             }, void 0, false, {
                 fileName: "src/Components/PersonalDetails/PersonalDetail.js",
@@ -88068,6 +87849,6 @@ const Root = (0, _styles.styled)('div', {
     });
 }
 
-},{"63064c539cead7aa":"6TFJp","6ce36b517c19dfdf":"jMk1U","2705c3a90259e42b":"7eExx","a1b866451c97f770":"fNeDq","b511852641de085b":"05iiF"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire94c2", {}, "./", "/", "http://localhost:1234")
+},{"63064c539cead7aa":"6TFJp","6ce36b517c19dfdf":"jMk1U","2705c3a90259e42b":"7eExx","a1b866451c97f770":"fNeDq","b511852641de085b":"05iiF"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequireb541", {}, "./", "/", "http://localhost:1234")
 
 //# sourceMappingURL=ctrlify.0f77c784.js.map

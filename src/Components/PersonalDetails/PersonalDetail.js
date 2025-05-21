@@ -3,7 +3,7 @@ import { useAppContext } from "../../Context/AppContext";
 
 const ErrorMessage = ({ message }) => {
   if (!message) return null;
-  return <div className="text-xs text-red-500 mt-1">{message}</div>;
+  return <div className="text-xs text-[#121826] mt-1">{message}</div>;
 };
 
 const PersonalDetail = ({ field, placeholder, validationRules }) => {
@@ -50,7 +50,7 @@ const PersonalDetail = ({ field, placeholder, validationRules }) => {
         disabled={isEdit}
         type="text"
         className={`bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg text-black placeholder:text-black/25 ${
-          error ? "border border-red-500" : ""
+          error ? "border border-[#121826]" : ""
         }`}
       />
       <ErrorMessage message={error} />
@@ -109,7 +109,7 @@ export const NumericField = ({ field, placeholder, validationRules }) => {
         disabled={isEdit}
         type="number"
         className={`bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg placeholder:text-black/25 ${
-          error ? "border border-red-500" : ""
+          error ? "border border-[#121826]" : ""
         }`}
       />
       <ErrorMessage message={error} />
@@ -149,7 +149,7 @@ export const IncomeField = ({ validationRules }) => {
       <div
         className={`bg-gray-100 pl-4 py-3 w-full rounded-lg text-lg ${
           income ? "text-black" : "text-black/25"
-        } ${error ? "border border-red-500" : ""}`}
+        } ${error ? "border border-[#121826]" : ""}`}
       >
         {income ? `₹${income}` : "Drag the Slider"}
       </div>
